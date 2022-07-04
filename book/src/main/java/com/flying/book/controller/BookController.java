@@ -1,6 +1,7 @@
 package com.flying.book.controller;
 
 import com.flying.book.controller.vo.BookVO;
+import com.flying.book.core.exception.ParameterInvalidException;
 import com.flying.book.core.web.AjaxResult;
 import com.flying.book.domain.Book;
 import com.flying.book.service.BookService;
@@ -21,6 +22,9 @@ public class BookController {
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public AjaxResult findById(@PathVariable Long id){
+        if(id==0){
+            throw new ParameterInvalidException();
+        }
         return AjaxResult.success(service.findById(id));
     }
 
@@ -47,6 +51,7 @@ public class BookController {
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public AjaxResult deleteById(@PathVariable Long id){
+        int n = Integer.parseInt("str");
         service.deleteById(id);
         return AjaxResult.success();
     }
