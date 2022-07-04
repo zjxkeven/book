@@ -7,11 +7,15 @@ import com.flying.book.domain.Book;
 import com.flying.book.service.BookService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/book")
 public class BookController {
+    @Value("${biz.config}")
+    String profileNamespace;
+
     @Autowired
     private BookService service;
 
@@ -22,6 +26,7 @@ public class BookController {
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public AjaxResult findById(@PathVariable Long id){
+        System.out.println(profileNamespace);
         if(id==0){
             throw new ParameterInvalidException();
         }

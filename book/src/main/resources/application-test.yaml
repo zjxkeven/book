@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 8088
 
 spring:
   jpa:
@@ -19,5 +19,6 @@ spring:
 
 #业务配置
 biz:
-  config: dev
+  config: test
+
 
