@@ -16,7 +16,10 @@ spring:
     console:
       path: /h2-console
       enabled: true
-
+  #Springfox使用的路径匹配是基于AntPathMatcher的
+  mvc:
+    pathmatch:
+      matching-strategy: ANT_PATH_MATCHER
 #业务配置
 biz:
   config: test
